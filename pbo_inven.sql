@@ -7,20 +7,12 @@ create table MANAJEMEN
    ID_BARANG          int not null AUTO_INCREMENT,
    KODE_BARANG        varchar(255),
    NAMA_BARANG        varchar(255),
-   HARGA_BARANG    	  varchar(255),
-   STOK_BARANG        varchar(255),
+   HARGA_BARANG    	numeric(10,2),
+   STOK_BARANG        numeric (8,0),
    primary key (ID_BARANG)
 );
 
 
-create table PENJUALAN
-(
-   ID_BARANG           int not null AUTO_INCREMENT,
-   NAMA_BARANG 	       varchar(255),
-   HARGA_BARANG        decimal,
-   KETERANGAN_PRODUK   varchar(512),
-   primary key (ID_BARANG)
-);
 
 create table TRANSAKSI
 (
@@ -36,7 +28,7 @@ create table TRANSAKSI_ITEM
    ID_TRANSAKSI         int,
    ID_BARANG            int,
    JUMLAH               decimal,
-   HARGA                numeric(8,0),
+   HARGA                numeric(10,2),
    primary key (ID)
 );
 
@@ -58,3 +50,14 @@ CREATE TABLE PELANGGAN
     alamat_pelanggan	TEXT,
     PRIMARY KEY(id_pelanggan)
 );
+
+
+
+alter table TRANSAKSI add constraint FK_RELATIONSHIP_5 foreign key (ID_USER)
+      references USER (ID_USER) on delete restrict on update restrict;
+
+alter table TRANSAKSI_ITEM add constraint FK_RELATIONSHIP_6 foreign key (ID_TRANSAKSI)
+      references TRANSAKSI (ID_TRANSAKSI) on delete restrict on update restrict;
+
+alter table TRANSAKSI_ITEM add constraint FK_RELATIONSHIP_7 foreign key (ID_BARANG)
+      references MANAJEMEN (ID_BARANG) on delete restrict on update restrict;

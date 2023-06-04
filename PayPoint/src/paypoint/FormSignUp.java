@@ -5,6 +5,11 @@ import java.sql.DriverManager;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 
+/**
+ *
+ * @author ADELIA
+ */
+
 public class FormSignUp extends javax.swing.JFrame {
     Connection conn = null;
     Statement st = null;

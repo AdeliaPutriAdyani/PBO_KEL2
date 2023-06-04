@@ -5,6 +5,11 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 
+/**
+ *
+ * @author ADELIA
+ */
+
 public class FormLogIn extends javax.swing.JFrame {
     Connection conn = null;
     Statement st = null;//tidak memiliki nilai

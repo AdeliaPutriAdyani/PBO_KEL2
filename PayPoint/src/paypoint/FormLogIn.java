@@ -34,7 +34,7 @@ public class FormLogIn extends javax.swing.JFrame {
                 ResultSet rs = st.executeQuery(sql);
                 if(rs.next()){
                     this.dispose();
-                    new FormMenuUtama().setVisible(true);
+                    new Penjualan().setVisible(true);
                 }else{
                     JOptionPane.showMessageDialog(rootPane, "User Name dan Password salah\nAtau Akun Anda Belum Terdaftar", "Pesan", JOptionPane.ERROR_MESSAGE);
                 }

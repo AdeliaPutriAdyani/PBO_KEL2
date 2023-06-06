@@ -43,9 +43,9 @@ CREATE TABLE USER
 
 CREATE TABLE PELANGGAN
 (
-	id_pelanggan		INT(15) NOT NULL,
-    nama_pelanggan		VARCHAR(100),
-    jk_pelanggan		VARCHAR(20),
+    id_pelanggan	INT(15) NOT NULL AUTO_INCREMENT,
+    nama_pelanggan	VARCHAR(100),
+    jk_pelanggan	VARCHAR(20),
     noTelp_pelanggan	VARCHAR(25),
     alamat_pelanggan	TEXT,
     PRIMARY KEY(id_pelanggan)

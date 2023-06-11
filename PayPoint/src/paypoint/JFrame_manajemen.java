@@ -24,15 +24,16 @@ public class JFrame_manajemen extends javax.swing.JFrame {
     
     manajemen Manajemen;
     DefaultTableModel tblManajemen;
-    
+    int idUser;
     public JFrame_manajemen() {
         initComponents();
         Manajemen = new manajemen();
         tblManajemen = (DefaultTableModel)tbl_manajemen.getModel();
         refreshTable();
-        
+        this.idUser = UserSession.getIdUser();
         btn_update.setVisible(false);
         btn_delete.setVisible(false);
+        
     } 
     
     public void refreshTable() {
@@ -79,6 +80,9 @@ public class JFrame_manajemen extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         tf_kodebarang = new javax.swing.JTextField();
         tf_namabarang = new javax.swing.JTextField();
+        buttonPelanggan = new javax.swing.JButton();
+        buttonPenjualan = new javax.swing.JButton();
+        buttonKeluar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -143,16 +147,43 @@ public class JFrame_manajemen extends javax.swing.JFrame {
             }
         });
 
+        buttonPelanggan.setText("Pelanggan");
+        buttonPelanggan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonPelangganActionPerformed(evt);
+            }
+        });
+
+        buttonPenjualan.setText("Penjualan");
+        buttonPenjualan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonPenjualanActionPerformed(evt);
+            }
+        });
+
+        buttonKeluar.setText("Keluar");
+        buttonKeluar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonKeluarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 516, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(buttonPelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonPenjualan, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonKeluar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 516, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -207,7 +238,12 @@ public class JFrame_manajemen extends javax.swing.JFrame {
                         .addComponent(btn_delete)))
                 .addGap(31, 31, 31)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonPelanggan)
+                    .addComponent(buttonPenjualan)
+                    .addComponent(buttonKeluar))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
 
         pack();
@@ -276,6 +312,23 @@ public class JFrame_manajemen extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_kodebarangActionPerformed
 
+    private void buttonPelangganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPelangganActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new framePelanggan().setVisible(true);
+    }//GEN-LAST:event_buttonPelangganActionPerformed
+
+    private void buttonPenjualanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPenjualanActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new Penjualan(idUser).setVisible(true);
+    }//GEN-LAST:event_buttonPenjualanActionPerformed
+
+    private void buttonKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonKeluarActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_buttonKeluarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -315,6 +368,9 @@ public class JFrame_manajemen extends javax.swing.JFrame {
     private javax.swing.JButton btn_create;
     private javax.swing.JButton btn_delete;
     private javax.swing.JButton btn_update;
+    private javax.swing.JButton buttonKeluar;
+    private javax.swing.JButton buttonPelanggan;
+    private javax.swing.JButton buttonPenjualan;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

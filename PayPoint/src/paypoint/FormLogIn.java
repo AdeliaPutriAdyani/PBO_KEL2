@@ -14,6 +14,7 @@ public class FormLogIn extends javax.swing.JFrame {
     Connection conn = null;
     Statement st = null;//tidak memiliki nilai
     
+    
     public FormLogIn(java.awt.Frame parent, boolean modal) {
         initComponents();
         try{
@@ -39,7 +40,14 @@ public class FormLogIn extends javax.swing.JFrame {
                 ResultSet rs = st.executeQuery(sql);
                 if(rs.next()){
                     this.dispose();
-                    new Penjualan().setVisible(true);
+                    int idUser = Integer.parseInt(rs.getString("id_user")); // Get the idUser from the result set
+                    java.awt.EventQueue.invokeLater(new Runnable() {
+                        public void run() {
+                            koneksi konek = new koneksi();
+                            UserSession.setIdUser(idUser);
+                            new Penjualan(idUser).setVisible(true);
+                        }
+                    });
                 }else{
                     JOptionPane.showMessageDialog(rootPane, "User Name dan Password salah\nAtau Akun Anda Belum Terdaftar", "Pesan", JOptionPane.ERROR_MESSAGE);
                 }

@@ -20,7 +20,7 @@ public class FormSignUp extends javax.swing.JFrame {
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost/pbo_inven","root","");
             st = conn.createStatement();
-            JOptionPane.showMessageDialog(null, "Berhasil Koneksi");
+            System.out.println("Berhasil Koneksi");
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, "Gagal Terhubung Ke Koneksi, karena "+ex);
         }

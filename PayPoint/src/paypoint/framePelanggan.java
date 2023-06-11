@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package pelanggan;
+package paypoint;
 
 import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.KeyEvent;
-import pelanggan.koneksi;
+import paypoint.koneksi;
 
 /**
  *
@@ -19,6 +19,7 @@ public class framePelanggan extends javax.swing.JFrame {
     // Mengkoneksikan database ke netbeans    
     private Connection connect = new koneksi().conn();
     private DefaultTableModel tabmode;
+    public int idUser;
     
     /**
      * Creates new form framePelanggan
@@ -28,6 +29,7 @@ public class framePelanggan extends javax.swing.JFrame {
         aktif();
         kosong();
         datatable();
+        this.idUser = UserSession.getIdUser();
     }
     
     protected void aktif() { // membuat saat pertama kali dijalankan maka kursor akan ada di txt_id_pelanggan
@@ -133,6 +135,9 @@ public class framePelanggan extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tbl_transaksiPelanggan = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        buttonManajemen = new javax.swing.JButton();
+        buttonPenjualan = new javax.swing.JButton();
+        buttonKeluar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -232,6 +237,27 @@ public class framePelanggan extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Poppins Medium", 0, 18)); // NOI18N
         jLabel1.setText("RIWAYAT TRANSAKSI PELANGGAN");
 
+        buttonManajemen.setText("Manajemen");
+        buttonManajemen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonManajemenActionPerformed(evt);
+            }
+        });
+
+        buttonPenjualan.setText("Penjualan");
+        buttonPenjualan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonPenjualanActionPerformed(evt);
+            }
+        });
+
+        buttonKeluar.setText("Keluar");
+        buttonKeluar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonKeluarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -242,8 +268,14 @@ public class framePelanggan extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(buttonPenjualan, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(buttonManajemen, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(buttonKeluar, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane2)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -315,11 +347,16 @@ public class framePelanggan extends javax.swing.JFrame {
                             .addComponent(buttonUbah)
                             .addComponent(buttonSimpan)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
+                .addGap(15, 15, 15)
                 .addComponent(jLabel1)
-                .addGap(36, 36, 36)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
-                .addGap(50, 50, 50))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonManajemen)
+                    .addComponent(buttonPenjualan)
+                    .addComponent(buttonKeluar))
+                .addGap(37, 37, 37))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -330,7 +367,9 @@ public class framePelanggan extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -451,6 +490,22 @@ public class framePelanggan extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txt_cariKeyPressed
 
+    private void buttonPenjualanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPenjualanActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new Penjualan(idUser).setVisible(true);
+    }//GEN-LAST:event_buttonPenjualanActionPerformed
+
+    private void buttonManajemenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonManajemenActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new JFrame_manajemen().setVisible(true);
+    }//GEN-LAST:event_buttonManajemenActionPerformed
+
+    private void buttonKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonKeluarActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_buttonKeluarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -491,6 +546,9 @@ public class framePelanggan extends javax.swing.JFrame {
     private javax.swing.JButton buttonCari;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton buttonHapus;
+    private javax.swing.JButton buttonKeluar;
+    private javax.swing.JButton buttonManajemen;
+    private javax.swing.JButton buttonPenjualan;
     private javax.swing.JButton buttonSimpan;
     private javax.swing.JButton buttonUbah;
     private javax.swing.JLabel jLabel1;

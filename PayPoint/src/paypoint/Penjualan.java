@@ -178,6 +178,10 @@ public class Penjualan extends javax.swing.JFrame {
         memberNama = new javax.swing.JTextField();
         memberNoTelp = new javax.swing.JTextField();
         memberAlamat = new javax.swing.JTextField();
+        uangTunai = new javax.swing.JTextField();
+        uangKembalian = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tablePelanggan = new javax.swing.JTable();
@@ -426,6 +430,11 @@ public class Penjualan extends javax.swing.JFrame {
 
         totalHargaTextField.setEditable(false);
         totalHargaTextField.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        totalHargaTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                totalHargaTextFieldActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("Member :");
 
@@ -452,6 +461,18 @@ public class Penjualan extends javax.swing.JFrame {
 
         memberAlamat.setEditable(false);
 
+        uangTunai.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                uangTunaiKeyReleased(evt);
+            }
+        });
+
+        uangKembalian.setEditable(false);
+
+        jLabel5.setText("Tunai");
+
+        jLabel11.setText("Kembalian");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -467,18 +488,25 @@ public class Penjualan extends javax.swing.JFrame {
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(memberId)))
+                                .addComponent(memberId, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)))
                         .addGap(17, 17, 17)
                         .addComponent(memberNoTelp, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(memberAlamat)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(buttonBayar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(memberAlamat, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(totalHargaTextField, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(uangTunai, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(203, 203, 203)
-                                .addComponent(buttonBayar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel6))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addComponent(jLabel11)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(uangKembalian))))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -486,7 +514,8 @@ public class Penjualan extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -498,13 +527,18 @@ public class Penjualan extends javax.swing.JFrame {
                             .addComponent(memberNoTelp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(3, 3, 3)
                         .addComponent(memberAlamat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(totalHargaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                        .addComponent(buttonBayar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(totalHargaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel11))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(uangTunai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(uangKembalian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(12, 12, 12)
+                        .addComponent(buttonBayar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
         tablePelanggan.setModel(new javax.swing.table.DefaultTableModel(
@@ -557,7 +591,7 @@ public class Penjualan extends javax.swing.JFrame {
                     .addComponent(buttonMemberBatal))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addContainerGap(105, Short.MAX_VALUE))
         );
 
         jButton1.setText("Keluar");
@@ -580,26 +614,27 @@ public class Penjualan extends javax.swing.JFrame {
                             .addComponent(panelPencarian, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(12, 12, 12)
-                                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(6, 6, 6)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(panelPencarian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
+                        .addGap(18, 18, 18)
                         .addComponent(jButton1))
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
@@ -836,6 +871,8 @@ public class Penjualan extends javax.swing.JFrame {
 
         
         int rowCount = tableTransaksi.getRowCount();
+        StringBuilder receipt = new StringBuilder();
+        String struk ="";
         for (int i = 0; i < rowCount; i++) {
             int id = Integer.parseInt(tableTransaksi.getValueAt(i, 0).toString());
             String namaBarang = tableTransaksi.getValueAt(i, 2).toString();
@@ -864,7 +901,11 @@ public class Penjualan extends javax.swing.JFrame {
                 System.out.println("Gagal");
                 Logger.getLogger(Penjualan.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
+            
+            struk += namaBarang+"\t\t"+jumlah+"\t\t"+total+"\n";
         }
+        
         select();
         DefaultTableModel model = (DefaultTableModel) tableTransaksi.getModel();
         model.setRowCount(0);
@@ -873,7 +914,8 @@ public class Penjualan extends javax.swing.JFrame {
         memberNoTelp.setText("");
         memberAlamat.setText("");
         tablePelanggan.clearSelection();
-
+        this.setVisible(false);
+        new Struk(struk,totalHargaTextField.getText(),uangTunai.getText(),uangKembalian.getText()).setVisible(true);
         
         
     }//GEN-LAST:event_buttonBayarActionPerformed
@@ -930,6 +972,36 @@ public class Penjualan extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void totalHargaTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalHargaTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_totalHargaTextFieldActionPerformed
+
+    private void uangTunaiKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_uangTunaiKeyReleased
+        // TODO add your handling code here:
+        String tunaiString = uangTunai.getText();
+        
+        // Mengubah string menjadi integer
+        int jumlah = 0;
+        if (!tunaiString.isEmpty()) {
+            jumlah = Integer.parseInt(tunaiString);
+        }
+        
+        // Mendapatkan nilai dari field barangHarga
+        String hargaString = totalHargaTextField.getText();
+        
+        // Mengubah string menjadi integer
+        float harga = 0;
+        if (!hargaString.isEmpty()) {
+            harga = Float.parseFloat(hargaString);
+        }
+        
+        // Menghitung total
+        float kembalian = jumlah - harga;
+        
+        // Menampilkan hasil di field barangTotal
+        uangKembalian.setText(Float.toString(kembalian));
+    }//GEN-LAST:event_uangTunaiKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -985,9 +1057,11 @@ public class Penjualan extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -1009,5 +1083,7 @@ public class Penjualan extends javax.swing.JFrame {
     private javax.swing.JTable tablePelanggan;
     private javax.swing.JTable tableTransaksi;
     private javax.swing.JTextField totalHargaTextField;
+    private javax.swing.JTextField uangKembalian;
+    private javax.swing.JTextField uangTunai;
     // End of variables declaration//GEN-END:variables
 }
